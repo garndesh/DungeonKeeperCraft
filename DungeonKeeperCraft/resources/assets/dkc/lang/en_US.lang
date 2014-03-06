@@ -1,6 +1,12 @@
 
 # Item localizations
-item.bm:basicItem.name=Basic Item
+item.dkc:basicItem.name=Basic Item
 
 # Block localizations
-tile.bm:basicBlock.name=Basic Block
+tile.dkc:basicBlock.name=Basic Block
+
+# Generator localization
+generator.dkc:dungeon=Dungeon World
+
+# Minion localization
+entity.dkc:minion.name=Minion

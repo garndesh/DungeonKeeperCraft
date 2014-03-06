@@ -1,18 +1,31 @@
 package garndesh.dkc.network;
 
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet250CustomPayload;
-import cpw.mods.fml.common.network.IPacketHandler;
-import cpw.mods.fml.common.network.Player;
+import net.minecraft.network.EnumConnectionState;
+import net.minecraft.network.INetHandler;
+import net.minecraft.util.IChatComponent;
 
-public class PacketHandler implements IPacketHandler{
+
+
+public class PacketHandler implements INetHandler{
 
 	@Override
-	public void onPacketData(INetworkManager manager,
-			Packet250CustomPayload packet, Player player) {
+	public void onDisconnect(IChatComponent var1) {
 		// TODO Auto-generated method stub
-		// Packets will be discarded unless implemented
 		
 	}
+
+	@Override
+	public void onConnectionStateTransition(EnumConnectionState var1,
+			EnumConnectionState var2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onNetworkTick() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

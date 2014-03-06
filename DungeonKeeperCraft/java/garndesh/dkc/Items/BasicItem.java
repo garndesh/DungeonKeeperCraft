@@ -1,9 +1,9 @@
 package garndesh.dkc.Items;
 
 import garndesh.dkc.DungeonKeeperCraft;
-import garndesh.dkc.lib.BlockIds;
+import garndesh.dkc.blocks.ModBlocks;
 import garndesh.dkc.lib.Strings;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,8 +13,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BasicItem extends Item {
 
-	public BasicItem(int itemId) {
-		super(itemId);
+	public BasicItem() {
+		super();
 		this.setUnlocalizedName(Strings.RESOURCE_PREFIX + Strings.BASIC_ITEM_NAME);
 		this.setCreativeTab(DungeonKeeperCraft.tabsBM);
         maxStackSize = 12;
@@ -22,7 +22,7 @@ public class BasicItem extends Item {
 
 	@Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister iconRegister)
+    public void registerIcons(IIconRegister iconRegister)
     {
         itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
     }
@@ -36,12 +36,12 @@ public class BasicItem extends Item {
 			int playerZ = (int) player.posZ;
 			//LogHelper.info("Player at: "+playerX+" "+playerY+" "+playerZ);
 			for(int i = 3; i<20; i++){
-				world.setBlock(playerX+i, playerY, playerZ, BlockIds.BASIC_BLOCK);
-				world.setBlock(playerX, playerY+i, playerZ, BlockIds.BASIC_BLOCK);
-				world.setBlock(playerX, playerY, playerZ+i, BlockIds.BASIC_BLOCK);
-				world.setBlock(playerX-i, playerY, playerZ, BlockIds.BASIC_BLOCK);
-				world.setBlock(playerX, playerY-i, playerZ, BlockIds.BASIC_BLOCK);
-				world.setBlock(playerX, playerY, playerZ-i, BlockIds.BASIC_BLOCK);
+				world.setBlock(playerX+i, playerY, playerZ, ModBlocks.basicBlock);
+				world.setBlock(playerX, playerY+i, playerZ, ModBlocks.basicBlock);
+				world.setBlock(playerX, playerY, playerZ+i, ModBlocks.basicBlock);
+				world.setBlock(playerX-i, playerY, playerZ, ModBlocks.basicBlock);
+				world.setBlock(playerX, playerY-i, playerZ, ModBlocks.basicBlock);
+				world.setBlock(playerX, playerY, playerZ-i, ModBlocks.basicBlock);
 			}
 		}
 		return itemStack;

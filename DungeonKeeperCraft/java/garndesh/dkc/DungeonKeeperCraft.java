@@ -3,14 +3,19 @@ package garndesh.dkc;
 import garndesh.dkc.Items.ModItems;
 import garndesh.dkc.blocks.ModBlocks;
 import garndesh.dkc.configuration.ConfigurationHandler;
-import garndesh.dkc.helper.LogHelper;
-import garndesh.dkc.network.PacketHandler;
+import garndesh.dkc.entity.minions.ModMinions;
 import garndesh.dkc.proxy.CommonProxy;
+import garndesh.dkc.tileentity.TileDungeonHeart;
+import garndesh.dkc.tileentity.TileEntities;
+import garndesh.dkc.world.WorldTypeDungeon;
 import garndesh.dkc.lib.Reference;
+import garndesh.dkc.lib.Strings;
 
 import java.io.File;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.world.WorldType;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -19,12 +24,12 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME)
-@NetworkMod(channels = {Reference.CHANNEL_NAME}, clientSideRequired = true, 
-							serverSideRequired = false, packetHandler = PacketHandler.class)
 public class DungeonKeeperCraft {
 
 	//Instance of the mod you are making
@@ -33,9 +38,16 @@ public class DungeonKeeperCraft {
 
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
     public static CommonProxy proxy;
+    public static final WorldType Dungeon = new WorldTypeDungeon("Dungeon");
     
     //Add a creative tab
-    public static CreativeTabs tabsBM = new CreativeTabs(CreativeTabs.getNextID(), Reference.MOD_ID);
+    public static CreativeTabs tabsBM = new CreativeTabs(Reference.MOD_ID){
+        @SideOnly(Side.CLIENT)
+        public Item getTabIconItem()
+        {
+            return ModItems.basicItem;
+        }
+    };
 
     @EventHandler
     public void serverStarting(FMLServerStartingEvent event)
@@ -44,14 +56,9 @@ public class DungeonKeeperCraft {
     }
     
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event){
         // set version number
         event.getModMetadata().version = Reference.VERSION_NUMBER;
-
-        // Initialize the log helper
-        LogHelper.init();
-        
         
         // Initialize the configuration{
         ConfigurationHandler.init(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.CHANNEL_NAME.toLowerCase() + File.separator);
@@ -61,18 +68,22 @@ public class DungeonKeeperCraft {
         
         //Init Items
         ModItems.Init();
+        
+        ModMinions.Init();
+        
     }
     
     
     @EventHandler
-    public void Init(FMLInitializationEvent event)
-    {
+    public void Init(FMLInitializationEvent event){
+        TileEntities.Init();       
+        
+        proxy.registerRenderers();
     	
     }
     
     @EventHandler
-    public void PostInit(FMLPostInitializationEvent event)
-    {
+    public void PostInit(FMLPostInitializationEvent event){
     	
     }
     

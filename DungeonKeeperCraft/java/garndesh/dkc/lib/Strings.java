@@ -7,7 +7,16 @@ public class Strings {
 	
 	//Block name constants
 	public static final String BASIC_BLOCK_NAME = "basicBlock";
+	public static final String BLOCK_DUNGEONHEART_NAME = "dungeonheart";
+	public static final String BLOCK_FILLER_NAME = "filler";
 
 	//Item name constants
 	public static final String BASIC_ITEM_NAME = "basicItem";
+	
+	//Minion name constants
+	public static final String DKC_MINION_NAME = "minion";
+
+	public static final String TILE_DUNGEONHEART_NAME = "dungeonhearttile";
+	public static final String TILE_FILLER_NAME = "fillertile";
+
 }
