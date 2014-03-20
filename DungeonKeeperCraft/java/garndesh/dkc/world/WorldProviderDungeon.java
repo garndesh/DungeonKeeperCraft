@@ -1,14 +1,17 @@
 package garndesh.dkc.world;
 
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import garndesh.dkc.world.gen.ChunkProviderDungeon;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.storage.WorldInfo;
 
-public class WolrdProviderDungeon extends WorldProvider{
+public class WorldProviderDungeon extends WorldProvider{
 
 	@Override
 	public String getDimensionName() {
@@ -16,10 +19,17 @@ public class WolrdProviderDungeon extends WorldProvider{
 	}
 	
 	@Override
+	public ChunkCoordinates getSpawnPoint()
+    {
+        return new ChunkCoordinates(0, 10, 0);
+    }
+	
+	@Override
 	public void registerWorldChunkManager(){
         this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.plains, 0);
         this.isHellWorld = true;
         this.hasNoSky = true;
+        FMLLog.fine("WCM registered");
     }
 	
 	 /**
@@ -28,6 +38,7 @@ public class WolrdProviderDungeon extends WorldProvider{
 	@Override
     public IChunkProvider createChunkGenerator()
     {
+        FMLLog.fine("ChunkProvider created");
         return new ChunkProviderDungeon(this.worldObj);
     }
 

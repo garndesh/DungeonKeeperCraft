@@ -32,7 +32,7 @@ public class WorldTypeDungeon extends WorldType{
     @Override
     public int getSpawnFuzz()
     {
-        return 100;
+        return 5;
     }
     
     public int getMinimumSpawnHeight(World world)

@@ -12,11 +12,13 @@ public class Strings {
 
 	//Item name constants
 	public static final String BASIC_ITEM_NAME = "basicItem";
+	public static final String KEEPER_STAFF_NAME = "keeperStaff";
 	
 	//Minion name constants
 	public static final String DKC_MINION_NAME = "minion";
 
 	public static final String TILE_DUNGEONHEART_NAME = "dungeonhearttile";
 	public static final String TILE_FILLER_NAME = "fillertile";
+
 
 }

@@ -18,7 +18,7 @@ public class RendererDungeonHeart extends TileEntitySpecialRenderer{
 		//FMLLog.info("Rendering DungeonHeart");
 		GL11.glPushMatrix();
         GL11.glDisable(GL11.GL_LIGHTING);
-		GL11.glScalef(1.0F, 1.0F, 1.0F);
+		GL11.glScalef(1.0F, -1.0F, 1.0F);
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
 		this.bindTexture(RecourceLocations.HEART_TEXTURE);
 		float size = ((TileDungeonHeart)tileEntity).getLife()/100.0F;
