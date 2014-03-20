@@ -7,6 +7,7 @@ import garndesh.dkc.entity.minions.ModMinions;
 import garndesh.dkc.proxy.CommonProxy;
 import garndesh.dkc.tileentity.TileDungeonHeart;
 import garndesh.dkc.tileentity.TileEntities;
+import garndesh.dkc.world.DimensionRegistration;
 import garndesh.dkc.world.WorldProviderDungeon;
 import garndesh.dkc.world.WorldTypeDungeon;
 import garndesh.dkc.lib.Reference;
@@ -44,7 +45,6 @@ public class DungeonKeeperCraft {
     public static final WorldType Dungeon = new WorldTypeDungeon("Dungeon");
     
 
-    public static final int dimensionId = DimensionManager.getNextFreeDimId();
     
     //Add a creative tab
     public static CreativeTabs tabsBM = new CreativeTabs(Reference.MOD_ID){
@@ -86,8 +86,7 @@ public class DungeonKeeperCraft {
         
         proxy.registerRenderers();
         
-        DimensionManager.registerProviderType(dimensionId, WorldProviderDungeon.class, false);
-        DimensionManager.registerDimension(dimensionId, dimensionId);
+        DimensionRegistration.init();
     	
     }
     
