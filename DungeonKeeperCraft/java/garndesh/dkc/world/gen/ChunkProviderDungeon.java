@@ -51,7 +51,7 @@ public class ChunkProviderDungeon implements IChunkProvider {
 		
 		Chunk chunk = new Chunk(this.worldObj, blocks, meta, chunkX, chunkY);
 		chunk.generateSkylightMap();
-		
+		chunk.generateHeightMap();
 		return chunk;
 	}
 

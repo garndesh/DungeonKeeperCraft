@@ -21,7 +21,7 @@ public class WorldProviderDungeon extends WorldProvider{
 	@Override
 	public ChunkCoordinates getSpawnPoint()
     {
-        return new ChunkCoordinates(0, 10, 0);
+        return new ChunkCoordinates(0, 5, 0);
     }
 	
 	@Override

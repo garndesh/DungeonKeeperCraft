@@ -2,7 +2,9 @@ package garndesh.dkc.Items;
 
 import garndesh.dkc.DungeonKeeperCraft;
 import garndesh.dkc.blocks.ModBlocks;
+import garndesh.dkc.lib.DimensionIds;
 import garndesh.dkc.lib.Strings;
+import garndesh.dkc.world.DKTeleporter;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -10,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import cpw.mods.fml.common.FMLLog;
@@ -17,7 +20,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class KeeperStaff extends Item {
-
+	
 	public KeeperStaff() {
 		super();
 		this.setUnlocalizedName(Strings.RESOURCE_PREFIX + Strings.KEEPER_STAFF_NAME);
@@ -36,19 +39,23 @@ public class KeeperStaff extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack,World world,EntityPlayer player){
 		if(!world.isRemote){ //makes sure this is only done server side.
+			
+			
+			int  		 goDim 	= (player.dimension == 0)? DimensionIds.dimensionId : 0;
+			WorldServer 	ws	= ((EntityPlayerMP) player).mcServer.worldServerForDimension(goDim);
+			Teleporter teleport = new DKTeleporter(ws);
 			// obviously make sure you are server side, then get the world server's default teleporter:
 			if (player.dimension != 2){
-				((EntityPlayerMP) player).mcServer.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) player, 2, ((WorldServer) world).getDefaultTeleporter());
+				((EntityPlayerMP) player).mcServer.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) player, 2, teleport);
 			} else {
-				((EntityPlayerMP) player).mcServer.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) player, 0, ((WorldServer) world).getDefaultTeleporter());
+				((EntityPlayerMP) player).mcServer.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) player, 0, teleport);
 			}
-			
-			player.setPositionAndUpdate(player.worldObj.getSpawnPoint().posX, player.worldObj.getSpawnPoint().posY + 1, player.worldObj.getSpawnPoint().posZ);
-			// get the height value so you don't get stuck in solid blocks or worse, in the void
-			//double dy = player.worldObj.getHeightValue(MathHelper.floor_double(player.posX), MathHelper.floor_double(player.posZ));
-
-			// still seem to need to set the position, +1 so you don't get in the void
-			//player.setPositionAndUpdate(player.posX, dy + 1, player.posZ);
+			//player.worldObj.get
+			double x = player.worldObj.getSpawnPoint().posX+0.5;
+			double z = player.worldObj.getSpawnPoint().posZ+0.5;
+			int y = player.worldObj.getHeightValue((int)x,(int) z);
+			y = (y <= 2)?10:y;
+			player.setPositionAndUpdate(x, y + 1, z);
 		}
 		return itemStack;
 	}
