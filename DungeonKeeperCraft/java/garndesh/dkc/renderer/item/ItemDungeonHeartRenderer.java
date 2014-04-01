@@ -73,7 +73,7 @@ public class ItemDungeonHeartRenderer implements IItemRenderer{
         FMLClientHandler.instance().getClient().renderEngine.bindTexture(RecourceLocations.HEART_MODEL);
 
         // Render
-        modelDungeonHeart.render();
+        modelDungeonHeart.renderHeart();
 
         GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glPopMatrix();

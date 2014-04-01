@@ -13,5 +13,6 @@ public class RecourceLocations {
 	public static final ResourceLocation HEART_MODEL = new ResourceLocation(mod,model+"dungeonHeart.obj");
 	public static final ResourceLocation HEART_BASE_MODEL = new ResourceLocation(mod,model+"dungeonHeartBase.obj");
 	public static final ResourceLocation HEART_BASE_TEXTURE = new ResourceLocation(mod,texture+"model/dungeonHeartBase.png");
+	public static final ResourceLocation HEART_TEXTURE = new ResourceLocation(mod,texture+"model/dungeonHeart.png");
 	
 }

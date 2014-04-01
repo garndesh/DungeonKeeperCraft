@@ -9,6 +9,7 @@ public class Strings {
 	public static final String BASIC_BLOCK_NAME = "basicBlock";
 	public static final String BLOCK_DUNGEONHEART_NAME = "dungeonheart";
 	public static final String BLOCK_FILLER_NAME = "filler";
+	public static final String BLOCK_ROOM_NAME = "roomblock";
 
 	//Item name constants
 	public static final String BASIC_ITEM_NAME = "basicItem";
@@ -19,6 +20,8 @@ public class Strings {
 
 	public static final String TILE_DUNGEONHEART_NAME = "dungeonhearttile";
 	public static final String TILE_FILLER_NAME = "fillertile";
+	public static final String TILE_ROOM_NAME = "roomtile";
+
 
 
 }

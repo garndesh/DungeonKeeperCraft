@@ -8,6 +8,7 @@ public class TileEntities {
 	public static void Init() {
 		GameRegistry.registerTileEntity(TileDungeonHeart.class, Strings.TILE_DUNGEONHEART_NAME);
 		GameRegistry.registerTileEntity(TileFiller.class, Strings.TILE_FILLER_NAME);
+		GameRegistry.registerTileEntity(TileRoom.class, Strings.TILE_ROOM_NAME);
 	}
 
 

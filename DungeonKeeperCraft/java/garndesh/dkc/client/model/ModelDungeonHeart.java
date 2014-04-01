@@ -8,17 +8,23 @@ import net.minecraftforge.client.model.IModelCustom;
 public class ModelDungeonHeart {
 	private IModelCustom modelHeart;
 	private IModelCustom modelHeartBase;
+	private IModelCustom modelSphere;
 
     public ModelDungeonHeart()
     {
     	FMLLog.info("Loading model");
-    	//modelHeart = AdvancedModelLoader.loadModel(RecourceLocations.HEART_MODEL);
+    	modelHeart = AdvancedModelLoader.loadModel(RecourceLocations.HEART_MODEL);
     	modelHeartBase = AdvancedModelLoader.loadModel(RecourceLocations.HEART_BASE_MODEL);
+    	modelSphere = AdvancedModelLoader.loadModel(RecourceLocations.MINION_MODEL);
     }
 
-    public void render()
+    public void renderHeart()
     {
     	modelHeart.renderAll();
+    }
+    
+    public void renderSphere(){
+    	modelSphere.renderAll();
     }
     
     public void renderBase(){

@@ -31,11 +31,11 @@ public class BlockDungeonHeart extends Block implements ITileEntityProvider{
 	
 	@Override
 	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int meta){
-		FMLLog.info("BlockPlaced addingFillers");
+		//FMLLog.info("BlockPlaced addingFillers");
 		for(int dx = -1; dx <2; dx++){
 			for(int dy = 0; dy <3; dy++){
 				for(int dz = -1; dz<2; dz++){
-					FMLLog.info("placing filler@ %d %d %d", dx, dy, dz);
+					//FMLLog.info("placing filler@ %d %d %d", dx, dy, dz);
 					if(dx!=0 || dy!=0 || dz!=0){
 						world.setBlock(x+dx, y+dy, z+dz, ModBlocks.blockFiller, 0, 2);
 						TileFiller tile = (TileFiller) world.getTileEntity(x+dx, y+dy, z+dz);
