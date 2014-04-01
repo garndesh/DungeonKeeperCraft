@@ -26,11 +26,11 @@ public class BlockDungeonHeart extends Block implements ITileEntityProvider{
         setBlockName(Strings.RESOURCE_PREFIX + Strings.BLOCK_DUNGEONHEART_NAME);
          
         //Add block to creativeTab
-        setCreativeTab(DungeonKeeperCraft.tabsBM);
+        //setCreativeTab(DungeonKeeperCraft.tabsBM);
 	}
 	
 	@Override
-	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int meta){
+	public void onBlockAdded(World world, int x, int y, int z){
 		//FMLLog.info("BlockPlaced addingFillers");
 		for(int dx = -1; dx <2; dx++){
 			for(int dy = 0; dy <3; dy++){
@@ -49,8 +49,6 @@ public class BlockDungeonHeart extends Block implements ITileEntityProvider{
 				}
 			}
 		}
-		
-		return meta;
 	}
 	
 	@Override

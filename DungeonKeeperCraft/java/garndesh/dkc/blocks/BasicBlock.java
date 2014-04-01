@@ -1,10 +1,13 @@
 package garndesh.dkc.blocks;
 
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import garndesh.dkc.DungeonKeeperCraft;
 import garndesh.dkc.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 
 public class BasicBlock extends Block{
 
@@ -23,4 +26,12 @@ public class BasicBlock extends Block{
         //Add block to creativeTab
         setCreativeTab(DungeonKeeperCraft.tabsBM);
 	}
+	
+	@Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconRegister)
+    {
+		blockIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
+    }
+	
 }

@@ -12,7 +12,7 @@ public class ModelDungeonHeart {
 
     public ModelDungeonHeart()
     {
-    	FMLLog.info("Loading model");
+    	//FMLLog.info("Loading model");
     	modelHeart = AdvancedModelLoader.loadModel(RecourceLocations.HEART_MODEL);
     	modelHeartBase = AdvancedModelLoader.loadModel(RecourceLocations.HEART_BASE_MODEL);
     	modelSphere = AdvancedModelLoader.loadModel(RecourceLocations.MINION_MODEL);
