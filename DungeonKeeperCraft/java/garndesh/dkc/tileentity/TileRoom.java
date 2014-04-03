@@ -27,13 +27,6 @@ public class TileRoom extends TileEntity {
 	public String getOwner() {
 		return owner;
 	}
-
-	public void killTile(){
-		EntityPlayer player = this.worldObj.getPlayerEntityByName(owner);
-		NBTTagCompound tag = player.getEntityData().getCompoundTag("HeartLocation");
-		TileDungeonHeart heart = (TileDungeonHeart) this.worldObj.getTileEntity(tag.getInteger("HeartX"), tag.getInteger("HeartY"), tag.getInteger("HeartZ"));
-		heart.removeTile(tileId);
-	}
 	
 	public void setOwner(String owner) {
 		this.owner = owner;
@@ -41,7 +34,7 @@ public class TileRoom extends TileEntity {
 			this.roomColour = 0xFFFFFF;
 		} else {
 			//TODO make roomcolours owner dependent.
-			this.roomColour = 0x55FF00;
+			this.roomColour = 0xFF00FF;
 		}
 	}
 	

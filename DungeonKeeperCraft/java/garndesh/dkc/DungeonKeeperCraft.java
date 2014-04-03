@@ -4,6 +4,7 @@ import garndesh.dkc.Items.ModItems;
 import garndesh.dkc.blocks.ModBlocks;
 import garndesh.dkc.configuration.ConfigurationHandler;
 import garndesh.dkc.entity.minions.ModMinions;
+import garndesh.dkc.event.CostumEvents;
 import garndesh.dkc.proxy.CommonProxy;
 import garndesh.dkc.tileentity.TileDungeonHeart;
 import garndesh.dkc.tileentity.TileEntities;
@@ -20,6 +21,7 @@ import net.minecraft.item.Item;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -88,6 +90,7 @@ public class DungeonKeeperCraft {
         
         DimensionRegistration.init();
     	
+        MinecraftForge.EVENT_BUS.register(new CostumEvents());
     }
     
     @EventHandler

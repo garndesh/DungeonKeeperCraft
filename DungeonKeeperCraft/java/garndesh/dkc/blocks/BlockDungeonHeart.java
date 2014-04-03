@@ -32,23 +32,26 @@ public class BlockDungeonHeart extends Block implements ITileEntityProvider{
 	@Override
 	public void onBlockAdded(World world, int x, int y, int z){
 		//FMLLog.info("BlockPlaced addingFillers");
-		for(int dx = -1; dx <2; dx++){
-			for(int dy = 0; dy <3; dy++){
-				for(int dz = -1; dz<2; dz++){
-					//FMLLog.info("placing filler@ %d %d %d", dx, dy, dz);
-					if(dx!=0 || dy!=0 || dz!=0){
-						world.setBlock(x+dx, y+dy, z+dz, ModBlocks.blockFiller, 0, 2);
-						TileFiller tile = (TileFiller) world.getTileEntity(x+dx, y+dy, z+dz);
-						if(tile != null){
-							tile.setCoords(x, y, z);
-						} else {
-							FMLLog.warning("Something went wrong while trying to add data to fillerblock @ %d %d %d", x+dx, y+dy, z+dz);
+		if(!world.isRemote){
+			for(int dx = -1; dx <2; dx++){
+				for(int dy = 0; dy <3; dy++){
+					for(int dz = -1; dz<2; dz++){
+						//FMLLog.info("placing filler@ %d %d %d", dx, dy, dz);
+						if(dx!=0 || dy!=0 || dz!=0){
+							world.setBlock(x+dx, y+dy, z+dz, ModBlocks.blockFiller, 0, 2);
+							TileFiller tile = (TileFiller) world.getTileEntity(x+dx, y+dy, z+dz);
+							if(tile != null){
+								tile.setCoords(x, y, z);
+							} else {
+								FMLLog.warning("Something went wrong while trying to add data to fillerblock @ %d %d %d", x+dx, y+dy, z+dz);
+							}
+							
 						}
-						
 					}
 				}
 			}
 		}
+		super.onBlockAdded(world, x, y, z);
 	}
 	
 	@Override

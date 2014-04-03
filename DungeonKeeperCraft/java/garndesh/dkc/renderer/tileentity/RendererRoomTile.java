@@ -26,7 +26,7 @@ public class RendererRoomTile extends TileEntitySpecialRenderer {
         
 		
         renderOveralyAt(x+0.5F, y+1F, z+0.5F, r, g, b);
-        //renderHeartAt(x+0.5F, y+1.5F, z+0.5F, tick);
+        renderHeartAt(x+0.5F, y+1.5F, z+0.5F, tick);
 
 	}
 	

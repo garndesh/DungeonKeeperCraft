@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -31,18 +32,10 @@ public class BasicItem extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack,World world,EntityPlayer player){
 		if(!world.isRemote){ //makes sure this is only done server side.
-			int playerX = (int) player.posX;
-			int playerY = (int) player.posY;
-			int playerZ = (int) player.posZ;
-			//LogHelper.info("Player at: "+playerX+" "+playerY+" "+playerZ);
-			for(int i = 3; i<20; i++){
-				world.setBlock(playerX+i, playerY, playerZ, ModBlocks.basicBlock);
-				world.setBlock(playerX, playerY+i, playerZ, ModBlocks.basicBlock);
-				world.setBlock(playerX, playerY, playerZ+i, ModBlocks.basicBlock);
-				world.setBlock(playerX-i, playerY, playerZ, ModBlocks.basicBlock);
-				world.setBlock(playerX, playerY-i, playerZ, ModBlocks.basicBlock);
-				world.setBlock(playerX, playerY, playerZ-i, ModBlocks.basicBlock);
-			}
+			player.capabilities.allowFlying = ! player.capabilities.allowFlying;
+			player.capabilities.allowEdit = !player.capabilities.allowEdit;
+			FMLLog.info("allowFlying = %s", player.capabilities.allowFlying);
+			player.sendPlayerAbilities(); 
 		}
 		return itemStack;
 	}

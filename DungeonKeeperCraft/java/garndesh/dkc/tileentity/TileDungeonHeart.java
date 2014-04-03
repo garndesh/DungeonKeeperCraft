@@ -3,14 +3,17 @@ package garndesh.dkc.tileentity;
 
 
 
+import garndesh.dkc.lib.NBTTagNames;
+import cpw.mods.fml.common.FMLLog;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.world.WorldSettings.GameType;
 
 public class TileDungeonHeart extends TileEntity{
 	private float health;
 	private String owner;
-	private ChunkCoordinates[] dungeonTiles = new ChunkCoordinates[256];
 	
 	public TileDungeonHeart(){
 		this.health = 100;
@@ -23,7 +26,15 @@ public class TileDungeonHeart extends TileEntity{
 	
 	private void checkLife() {
 		if(this.health <= 0){
-			this.worldObj.getPlayerEntityByName(owner).setHealth(0);
+			try {
+				EntityPlayer player = this.worldObj.getPlayerEntityByName(this.owner);
+				NBTTagCompound tag = player.getEntityData();
+				tag.removeTag(NBTTagNames.PP_HEARTLOCATION);
+				player.setHealth(0);
+				player.setGameType(GameType.ADVENTURE);
+			} catch(NullPointerException e) {
+				FMLLog.warning("NullPointerException @ heart death");
+			}
 			this.worldObj.setBlockToAir(xCoord, yCoord, zCoord);
 		}
 		
@@ -50,28 +61,5 @@ public class TileDungeonHeart extends TileEntity{
 
 	public void setOwner(String name) {
 		this.owner = name;		
-	}
-	
-	/**
-	 * @param ChunkCoordinates of the new tile
-	 * @return index the coords are stored.
-	 */
-	public int addDungeonTile(ChunkCoordinates coords){
-		for (int i = 0; i < dungeonTiles.length; i++){
-			if(dungeonTiles[i]==null){
-				dungeonTiles[i] = coords;
-				return i;
-			}
-		}
-		return -1;
-	}
-	
-	public void removeTile(int index){
-		this.dungeonTiles[index] = null;
-	}
-
-	public int addDungeonTile(int x, int y, int z) {
-		ChunkCoordinates coords = new ChunkCoordinates(x, y, z);
-		return this.addDungeonTile(coords);
 	}
 }

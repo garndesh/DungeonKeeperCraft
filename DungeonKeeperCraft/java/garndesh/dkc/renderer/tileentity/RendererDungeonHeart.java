@@ -33,7 +33,7 @@ public class RendererDungeonHeart extends TileEntitySpecialRenderer{
 		GL11.glScalef(1F, 1F, 1F);
 		GL11.glTranslatef((float) x +0.5F, (float) y+2F, (float) z+0.5F );
 		this.bindTexture(RecourceLocations.HEART_TEXTURE);
-		float size = ((TileDungeonHeart)tileEntity).getLife()/120.0F+0.2F;
+		float size = ((TileDungeonHeart)tileEntity).getLife()/100.0F;
 		GL11.glScalef(0.8F*size, 0.8F*size, 0.8F*size);
 		GL11.glRotatef(45, 1, 1, 1);
 		tickCount += 1;

@@ -22,14 +22,16 @@ public class BlockFiller extends Block implements ITileEntityProvider{
 
 	@Override
 	public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player) {
-		TileFiller tileFiller = (TileFiller) world.getTileEntity(x, y, z);
-		TileDungeonHeart tileHeart = (TileDungeonHeart) world.getTileEntity(tileFiller.primary_x, tileFiller.primary_y, tileFiller.primary_z);
-		if (tileHeart != null){
-			tileHeart.damageHeart(3.0F);
-		}else{
-			FMLLog.warning("Something went very wrong with TileFiller @ %d %d %d", x, y, z);
-			FMLLog.warning("No dungeonHeart found @ ", tileFiller.primary_x, tileFiller.primary_y, tileFiller.primary_z);
-			
+		if (!world.isRemote){
+			TileFiller tileFiller = (TileFiller) world.getTileEntity(x, y, z);
+			TileDungeonHeart tileHeart = (TileDungeonHeart) world.getTileEntity(tileFiller.primary_x, tileFiller.primary_y, tileFiller.primary_z);
+			if (tileHeart != null){
+				tileHeart.damageHeart(3.0F);
+			}else{
+				FMLLog.warning("Something went very wrong with TileFiller @ %d %d %d", x, y, z);
+				FMLLog.warning("No dungeonHeart found @ %d %d %d", tileFiller.primary_x, tileFiller.primary_y, tileFiller.primary_z);
+				
+			}
 		}
 	}
 	
