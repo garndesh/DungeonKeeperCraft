@@ -1,5 +1,7 @@
 package garndesh.dkc.blocks;
 
+import java.util.Random;
+
 import cpw.mods.fml.common.FMLLog;
 import garndesh.dkc.lib.Strings;
 import garndesh.dkc.tileentity.TileDungeonHeart;
@@ -8,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -30,7 +33,6 @@ public class BlockFiller extends Block implements ITileEntityProvider{
 			}else{
 				FMLLog.warning("Something went very wrong with TileFiller @ %d %d %d", x, y, z);
 				FMLLog.warning("No dungeonHeart found @ %d %d %d", tileFiller.primary_x, tileFiller.primary_y, tileFiller.primary_z);
-				
 			}
 		}
 	}

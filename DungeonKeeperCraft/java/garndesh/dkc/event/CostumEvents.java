@@ -18,18 +18,10 @@ public class CostumEvents {
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public void BreakBlockEvent(BreakEvent event){
 		EntityPlayer player = event.getPlayer();
-		FMLLog.info("breakBlock event triggered");
+		//FMLLog.info("breakBlock event triggered");
 		if(player.getEntityData().hasKey(NBTTagNames.PP_HEARTLOCATION)){
 			
 			event.setCanceled(true);
 		}
-	}
-	/**
-	* To make sure you understand: You can mash together any events in a single class!
-	*/
-	@SubscribeEvent(priority = EventPriority.NORMAL)
-	public void onSleepyTime(PlayerSleepInBedEvent event)
-	{
-		event.result = EnumStatus.NOT_POSSIBLE_NOW;
 	}
 }

@@ -1,8 +1,7 @@
 package garndesh.dkc.world.gen;
 
 import java.util.List;
-
-import cpw.mods.fml.common.FMLLog;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;
@@ -15,10 +14,14 @@ import net.minecraft.world.chunk.IChunkProvider;
 public class ChunkProviderDungeon implements IChunkProvider {
 
 	private World worldObj;
-	private int populatedChunks = 10;
+	private int populatedChunks = 12;
+	private Random rand;
+	private CaveGen caves;
 	
 	public ChunkProviderDungeon(World world){
 		this.worldObj = world;
+		this.rand = this.worldObj.rand;
+		this.caves = new CaveGen(this.worldObj);
 	}
 	
 	
@@ -29,11 +32,11 @@ public class ChunkProviderDungeon implements IChunkProvider {
 	}
 
 	@Override
-	public Chunk provideChunk(int chunkX, int chunkY) {
+	public Chunk provideChunk(int chunkX, int chunkZ) {
 		Block[] blocks = new Block[16*16*256];
 		byte[] meta = new byte[16*16*256];
 		//FMLLog.info("providing Chunk");
-		if (Math.abs(chunkX) < populatedChunks && Math.abs(chunkY) < populatedChunks ){
+		if (Math.abs(chunkX) <= populatedChunks && Math.abs(chunkZ) <= populatedChunks ){
 			//FMLLog.info("Filling Chunk");
 			for(int x =0; x < 16; x++){
 				for (int y = 0; y < 256; y++){
@@ -41,15 +44,23 @@ public class ChunkProviderDungeon implements IChunkProvider {
 						if (y == 0) {
 							blocks[((x*16)+z)*256 +y] = Block.getBlockFromName("bedrock");
 						} else if (y <= 4){
-							blocks[((x*16)+z)*256 +y] = Block.getBlockFromName("wool");
-							meta[((x*16)+z)*256 +y] = (byte)x;
+							blocks[((x*16)+z)*256 +y] = Block.getBlockFromName("stone");
+							if ((x+rand.nextInt(4) >= 15 && chunkX == this.populatedChunks)){
+								blocks[((x*16)+z)*256 +y] = Block.getBlockFromName("bedrock");
+							} else if ((x-rand.nextInt(4) <= 0 && chunkX == -this.populatedChunks)){
+								blocks[((x*16)+z)*256 +y] = Block.getBlockFromName("bedrock");
+							} else if ((z+rand.nextInt(4) >= 15 && chunkZ == this.populatedChunks)){
+								blocks[((x*16)+z)*256 +y] = Block.getBlockFromName("bedrock");
+							} else if ((z-rand.nextInt(4) <= 0 && chunkZ == -this.populatedChunks)){
+								blocks[((x*16)+z)*256 +y] = Block.getBlockFromName("bedrock");
+							}
 						}
 					}
 				}
 			}
 		}
-		
-		Chunk chunk = new Chunk(this.worldObj, blocks, meta, chunkX, chunkY);
+		caves.generateCaves(chunkX, chunkZ, blocks);
+		Chunk chunk = new Chunk(this.worldObj, blocks, meta, chunkX, chunkZ);
 		chunk.generateSkylightMap();
 		chunk.generateHeightMap();
 		return chunk;
