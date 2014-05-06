@@ -3,7 +3,6 @@ package garndesh.dkc.tileentity;
 
 import java.util.Arrays;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 

@@ -26,9 +26,8 @@ public class ChunkProviderDungeon implements IChunkProvider {
 	
 	
 	@Override
-	public boolean chunkExists(int x, int y) {
-		return true;
-		//return Math.abs(x) < populatedChunks && Math.abs(y) < populatedChunks;
+	public boolean chunkExists(int x, int z) {
+		return (Math.abs(x) <= populatedChunks && Math.abs(z) <= populatedChunks);
 	}
 
 	@Override
@@ -96,6 +95,7 @@ public class ChunkProviderDungeon implements IChunkProvider {
 		return "SomethingSomethingDungeon";
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List getPossibleCreatures(EnumCreatureType var1, int var2, int var3,
 			int var4) {

@@ -9,7 +9,6 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.storage.WorldInfo;
 
 public class WorldProviderDungeon extends WorldProvider{
 

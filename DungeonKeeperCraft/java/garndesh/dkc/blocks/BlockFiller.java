@@ -1,7 +1,5 @@
 package garndesh.dkc.blocks;
 
-import java.util.Random;
-
 import cpw.mods.fml.common.FMLLog;
 import garndesh.dkc.lib.Strings;
 import garndesh.dkc.tileentity.TileDungeonHeart;
@@ -10,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;

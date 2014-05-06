@@ -1,13 +1,9 @@
 package garndesh.dkc.event;
 
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import garndesh.dkc.lib.NBTTagNames;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayer.EnumStatus;
-import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 
 public class CostumEvents {

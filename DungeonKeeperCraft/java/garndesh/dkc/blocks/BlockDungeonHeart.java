@@ -1,7 +1,6 @@
 package garndesh.dkc.blocks;
 
 
-import garndesh.dkc.DungeonKeeperCraft;
 import garndesh.dkc.lib.RenderIds;
 import garndesh.dkc.lib.Strings;
 import garndesh.dkc.tileentity.TileDungeonHeart;
@@ -9,7 +8,6 @@ import garndesh.dkc.tileentity.TileFiller;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLLog;

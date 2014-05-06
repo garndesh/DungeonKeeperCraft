@@ -8,7 +8,6 @@ import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.WorldSettings.GameType;
 
 public class TileDungeonHeart extends TileEntity{

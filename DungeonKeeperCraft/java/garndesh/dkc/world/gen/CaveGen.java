@@ -2,8 +2,6 @@ package garndesh.dkc.world.gen;
 
 import java.util.Random;
 
-import cpw.mods.fml.common.FMLLog;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 

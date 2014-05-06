@@ -1,7 +1,6 @@
 package garndesh.dkc.Items;
 
 import garndesh.dkc.DungeonKeeperCraft;
-import garndesh.dkc.blocks.ModBlocks;
 import garndesh.dkc.lib.DimensionIds;
 import garndesh.dkc.lib.Strings;
 import garndesh.dkc.world.DKTeleporter;
@@ -10,12 +9,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

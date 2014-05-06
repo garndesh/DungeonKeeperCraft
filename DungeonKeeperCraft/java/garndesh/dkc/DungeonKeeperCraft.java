@@ -6,21 +6,15 @@ import garndesh.dkc.configuration.ConfigurationHandler;
 import garndesh.dkc.entity.minions.ModMinions;
 import garndesh.dkc.event.CostumEvents;
 import garndesh.dkc.proxy.CommonProxy;
-import garndesh.dkc.tileentity.TileDungeonHeart;
 import garndesh.dkc.tileentity.TileEntities;
 import garndesh.dkc.world.DimensionRegistration;
-import garndesh.dkc.world.WorldProviderDungeon;
 import garndesh.dkc.world.WorldTypeDungeon;
 import garndesh.dkc.lib.Reference;
-import garndesh.dkc.lib.Strings;
-
 import java.io.File;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldType;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -30,7 +24,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

@@ -1,6 +1,5 @@
 package garndesh.dkc.client.model;
 
-import cpw.mods.fml.common.FMLLog;
 import garndesh.dkc.lib.RecourceLocations;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;

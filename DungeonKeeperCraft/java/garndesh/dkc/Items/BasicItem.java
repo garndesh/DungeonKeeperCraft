@@ -1,7 +1,6 @@
 package garndesh.dkc.Items;
 
 import garndesh.dkc.DungeonKeeperCraft;
-import garndesh.dkc.blocks.ModBlocks;
 import garndesh.dkc.lib.Strings;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;

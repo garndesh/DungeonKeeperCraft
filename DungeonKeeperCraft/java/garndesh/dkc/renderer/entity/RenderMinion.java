@@ -1,6 +1,7 @@
 package garndesh.dkc.renderer.entity;
 
 import garndesh.dkc.client.model.MinionModel;
+import garndesh.dkc.entity.minions.EntityMinion;
 import garndesh.dkc.lib.RecourceLocations;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -19,9 +20,10 @@ public class RenderMinion extends RenderLiving {
 	}
 
 	
-	public void renderModel(EntityLivingBase par1EntityLivingBase, float par2, float par3, float par4, float par5, float par6, float par7) {
+	@Override
+	public void renderModel(EntityLivingBase entityLivingBase, float time, float maxAngle, float par4, float par5, float par6, float par7) {
 		this.bindTexture(RecourceLocations.MINION_TEXTURE);
-		minionModel.render();
+		minionModel.render((EntityMinion)entityLivingBase, time, maxAngle, par4, par5, par6, par7);
 	}
 
 	@Override
